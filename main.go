@@ -17,7 +17,7 @@ func main() {
 	rateLimiter := NewRateLimiter(persistence)
 
 	log.Println("Setting up HTTP handler...")
-	http.Handle("/", rateLimiter.Middleware(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	http.Handle("/", RateLimiterMiddleware(rateLimiter, http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("Hello, World!"))
 	})))
 
