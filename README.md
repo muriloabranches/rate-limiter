@@ -13,7 +13,7 @@ Este projeto implementa um rate limiter utilizando Redis para persistência. Aba
 1. Clone o repositório:
 
 ```sh
-git clone https://github.com/seu-usuario/rate-limiter.git
+git clone https://github.com/muriloabranches/rate-limiter.git
 cd rate-limiter
 ```
 
