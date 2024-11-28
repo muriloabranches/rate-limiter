@@ -3,14 +3,29 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
+	"strconv"
 
 	"github.com/go-redis/redis/v8"
+	"github.com/joho/godotenv"
 )
 
 func main() {
+	godotenv.Load()
+
 	log.Println("Starting Redis client...")
+
+	redisAddr := os.Getenv("REDIS_ADDR")
+	redisPassword := os.Getenv("REDIS_PASSWORD")
+	redisDB, err := strconv.Atoi(os.Getenv("REDIS_DB"))
+	if err != nil {
+		log.Fatalf("Invalid REDIS_DB value: %v", err)
+	}
+
 	client := redis.NewClient(&redis.Options{
-		Addr: "localhost:6379",
+		Addr:     redisAddr,
+		Password: redisPassword,
+		DB:       redisDB,
 	})
 
 	persistence := NewRedisPersistence(client)

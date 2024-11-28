@@ -8,7 +8,6 @@ import (
 	"time"
 
 	"github.com/go-redis/redis/v8"
-	"github.com/joho/godotenv"
 )
 
 var ctx = context.Background()
@@ -22,8 +21,6 @@ type RateLimiter struct {
 }
 
 func NewRateLimiter(persistence Persistence) *RateLimiter {
-	godotenv.Load()
-
 	ipRateLimit, _ := strconv.Atoi(os.Getenv("IP_RATE_LIMIT"))
 	tokenRateLimit, _ := strconv.Atoi(os.Getenv("TOKEN_RATE_LIMIT"))
 	blockDuration, _ := strconv.Atoi(os.Getenv("BLOCK_DURATION"))
