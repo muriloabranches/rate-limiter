@@ -79,3 +79,21 @@ Content-Type: text/plain; charset=utf-8
 
 you have reached the maximum number of requests or actions allowed within a certain time frame
 ```
+
+### Testes de Integração
+
+Para garantir que a funcionalidade de bloqueio por IP e token está funcionando corretamente, você pode executar os testes de integração (integration_test.go)
+
+#### Configuração dos Testes
+
+1. Certifique-se de que o Redis está em execução. Você pode usar o Docker Compose para isso:
+
+```sh
+docker-compose up -d redis
+```
+
+2. Execute os testes de integração:
+
+```sh
+go test -v
+```
